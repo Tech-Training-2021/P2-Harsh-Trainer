@@ -40,6 +40,7 @@ namespace Trainer.Controllers
         [HttpPost]
         public ActionResult Register(Models.Register register, int role)
         {
+
             var userid = user.addUser(Trainer.Mapper.UserMapper.Map(register, role));
             TempData["userid"] = userid;
             if (role == 2)
@@ -83,8 +84,11 @@ namespace Trainer.Controllers
         [HttpPost]
         public ActionResult Skills(Trainer.Models.Education edu)
         {
-            int id = Convert.ToInt32(TempData["userid"]);
-            exp.addEducation(Trainer.Mapper.EducationMapper.Map(edu, id));
+            if (ModelState.IsValid)
+            {
+                int id = Convert.ToInt32(TempData["userid"]);
+                exp.addEducation(Trainer.Mapper.EducationMapper.Map(edu, id));
+            }
             return RedirectToAction("Skills");
         }
         [HttpGet]
@@ -95,8 +99,11 @@ namespace Trainer.Controllers
         [HttpPost]
         public ActionResult Experience(Trainer.Models.Experience exp)
         {
-            int id = Convert.ToInt32(TempData["userid"]);
-            skill.addSkill(Trainer.Mapper.SkillsMapper.Map(exp, id));
+            if (ModelState.IsValid)
+            {
+                int id = Convert.ToInt32(TempData["userid"]);
+                skill.addSkill(Trainer.Mapper.SkillsMapper.Map(exp, id));
+            }
             return RedirectToAction("Experience");
         }
     }

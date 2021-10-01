@@ -28,6 +28,7 @@ namespace Trainer.Controllers
         [HttpGet]
         public IActionResult EditProfile()
         {
+
             TempData["Name"] = HttpContext.Session.GetString("Name");
             int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
             var userDetails = user.getUserById(id);
@@ -36,20 +37,29 @@ namespace Trainer.Controllers
         [HttpPost]
         public IActionResult EditProfile(Trainer.Models.User userdata)
         {
-            int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            user.editUser(id, Trainer.Mapper.UserMapper.Map(userdata));
-            HttpContext.Session.SetString("Name", userdata.Name);
+            TempData["Name"] = HttpContext.Session.GetString("Name");
+            if (ModelState.IsValid)
+            {
+                int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+                user.editUser(id, Trainer.Mapper.UserMapper.Map(userdata));
+                HttpContext.Session.SetString("Name", userdata.Name);
+            }
             return RedirectToAction("EditProfile");
         }
         public IActionResult CreateEducation()
         {
+            TempData["Name"] = HttpContext.Session.GetString("Name");
             return View();
         }
         [HttpPost]
         public IActionResult CreateEducation(Trainer.Models.Education edu)
         {
-            int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            exp.addEducation(Trainer.Mapper.EducationMapper.Map(edu, id));
+            if (ModelState.IsValid)
+            {
+                TempData["Name"] = HttpContext.Session.GetString("Name");
+                int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+                exp.addEducation(Trainer.Mapper.EducationMapper.Map(edu, id));
+            }
             return RedirectToAction("GetExperience");
         }
         public IActionResult GetExperience()
@@ -71,9 +81,12 @@ namespace Trainer.Controllers
         [HttpPost]
         public IActionResult EditEducation(int id, Trainer.Models.Education edu)
         {
-            TempData["Name"] = HttpContext.Session.GetString("Name");
-            int _id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            exp.editEducation(id, Trainer.Mapper.EducationMapper.Map(edu, _id));
+            if (ModelState.IsValid)
+            {
+                TempData["Name"] = HttpContext.Session.GetString("Name");
+                int _id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+                exp.editEducation(id, Trainer.Mapper.EducationMapper.Map(edu, _id));
+            }
             return RedirectToAction("GetExperience");
         }
         [HttpGet]
@@ -86,11 +99,13 @@ namespace Trainer.Controllers
         }
         public IActionResult EducationDelete(int id)
         {
+            TempData["Name"] = HttpContext.Session.GetString("Name");
             exp.deleteEducationData(id);
             return RedirectToAction("GetExperience");
         }
         public IActionResult GetSkills()
         {
+            TempData["Name"] = HttpContext.Session.GetString("Name");
             int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
             var data = skill.getExperienceByUserId(id);
             List<Trainer.Models.Experience> dataView = new List<Trainer.Models.Experience>();
@@ -108,23 +123,31 @@ namespace Trainer.Controllers
         [HttpPost]
         public IActionResult CreateExperience(Trainer.Models.Experience exp)
         {
-            int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            skill.addSkill(Trainer.Mapper.SkillsMapper.Map(exp, id));
+            if (ModelState.IsValid)
+            {
+                TempData["Name"] = HttpContext.Session.GetString("Name");
+                int id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+                skill.addSkill(Trainer.Mapper.SkillsMapper.Map(exp, id));
+            }
             return RedirectToAction("GetSkills");
         }
 
 
         public IActionResult EditSkills(int id)
         {
+            TempData["Name"] = HttpContext.Session.GetString("Name");
             var data = skill.getExperienceById(id);
             return View(Trainer.Mapper.SkillsMapper.Map(data));
         }
         [HttpPost]
         public IActionResult EditSkills(int id, Trainer.Models.Experience exp)
         {
-            TempData["Name"] = HttpContext.Session.GetString("Name");
-            int _id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
-            skill.editSkill(id, Trainer.Mapper.SkillsMapper.Map(exp, _id));
+            if (ModelState.IsValid)
+            {
+                TempData["Name"] = HttpContext.Session.GetString("Name");
+                int _id = Convert.ToInt32(HttpContext.Session.GetInt32("UserId"));
+                skill.editSkill(id, Trainer.Mapper.SkillsMapper.Map(exp, _id));
+            }
             return RedirectToAction("GetSkills");
         }
         [HttpGet]
@@ -137,6 +160,7 @@ namespace Trainer.Controllers
         }
         public IActionResult DeleteSkills(int id)
         {
+
             skill.deleteExp(id);
             return RedirectToAction("GetSkills");
         }
