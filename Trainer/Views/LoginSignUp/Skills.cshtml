@@ -1,0 +1,45 @@
+﻿@model Trainer.Models.Education
+
+@{
+    ViewData["Title"] = "Skills";
+    Layout = "~/Views/Shared/LoginSignUp.cshtml";
+}
+
+<style>
+    label, h2 {
+        color: white;
+    }
+</style>
+<h2>Enter Education Details</h2>
+<hr />
+
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <form asp-action="Skills">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="QualificationName" class="control-label"></label>
+                <input asp-for="QualificationName" class="form-control" />
+                <span asp-validation-for="QualificationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfPassing" class="control-label"></label>
+                <input asp-for="YearOfPassing" class="form-control" />
+                <span asp-validation-for="YearOfPassing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage" class="control-label"></label>
+                <input asp-for="Percentage" class="form-control" />
+                <span asp-validation-for="Percentage" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-default" />
+                <a asp-action="Experience" class=" btn btn-primary ml-2">Continue</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+

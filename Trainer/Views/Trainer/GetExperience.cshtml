@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Trainer.Models.Education>
+
+@{
+    ViewData["Title"] = "GetExperience";
+    Layout = "~/Views/Shared/_Layout_Trainer.cshtml";
+}
+
+<h2>GetExperience</h2>
+
+<p>
+    <a asp-action="CreateEducation">Add Education</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EduId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QualificationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfPassing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Percentage)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EduId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QualificationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfPassing)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Percentage)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditEducation", new { id = item.EduId }) |
+                    @Html.ActionLink("Details", "EducationDetails", new { id = item.EduId }) |
+                    @Html.ActionLink("Delete", "EducationDelete", new { id = item.EduId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

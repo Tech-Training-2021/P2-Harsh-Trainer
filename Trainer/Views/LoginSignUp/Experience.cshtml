@@ -1,0 +1,45 @@
+﻿@model Trainer.Models.Experience
+
+@{
+    ViewData["Title"] = "Experience";
+    Layout = "~/Views/Shared/LoginSignUp.cshtml";
+}
+<style>
+    label, h2 {
+        color: white;
+    }
+</style>
+<h2>Experience</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Experience">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CompanyName" class="control-label"></label>
+                <input asp-for="CompanyName" class="form-control" />
+                <span asp-validation-for="CompanyName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input type="date" asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input type="date" asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Skill" class="control-label"></label>
+                <input asp-for="Skill" class="form-control" />
+                <span asp-validation-for="Skill" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-default" />
+                <a asp-action="Index" class="btn btn-danger">Continue</a>
+            </div>
+        </form>
+    </div>
+</div>

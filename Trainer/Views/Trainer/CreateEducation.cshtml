@@ -1,0 +1,36 @@
+﻿@model Trainer.Models.Education
+
+@{
+    ViewData["Title"] = "CreateEducation";
+    Layout = "~/Views/Shared/_Layout_Trainer.cshtml";
+}
+
+<h4> Add Education</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateEducation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="QualificationName" class="control-label"></label>
+                <input asp-for="QualificationName" class="form-control" />
+                <span asp-validation-for="QualificationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfPassing" class="control-label"></label>
+                <input asp-for="YearOfPassing" class="form-control" />
+                <span asp-validation-for="YearOfPassing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Percentage" class="control-label"></label>
+                <input asp-for="Percentage" class="form-control" />
+                <span asp-validation-for="Percentage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Education" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

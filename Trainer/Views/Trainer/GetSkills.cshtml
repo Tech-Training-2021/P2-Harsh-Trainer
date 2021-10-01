@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Trainer.Models.Experience>
+
+@{
+    ViewData["Title"] = "GetSkills";
+    Layout = "~/Views/Shared/_Layout_Trainer.cshtml";
+}
+
+<h2>Experience</h2>
+
+<p>
+    <a asp-action="CreateExperience">Add Experience</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Skill)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Skill)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditSkills", new { id = item.ExpId }) |
+                    @Html.ActionLink("Details", "DetailsSkills", new { id = item.ExpId }) |
+                    @Html.ActionLink("Delete", "DeleteSkills", new { id = item.ExpId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

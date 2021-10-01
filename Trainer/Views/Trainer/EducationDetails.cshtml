@@ -1,0 +1,49 @@
+﻿@model Trainer.Models.Education
+
+@{
+    ViewData["Title"] = "EducationDetails";
+    Layout = "~/Views/Shared/_Layout_Trainer.cshtml";
+}
+
+<h2>Education Details</h2>
+
+<div>
+    <h4>Education</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EduId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EduId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QualificationName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QualificationName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearOfPassing)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearOfPassing)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Percentage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Percentage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+    </dl>
+</div>
+<div>
+
+    <a asp-action="GetExperience">Back to List</a>
+</div>
