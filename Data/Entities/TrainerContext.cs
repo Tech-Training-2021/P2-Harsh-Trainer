@@ -26,7 +26,7 @@ namespace Data.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-D4U1K1L;Initial Catalog=Trainer;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=tcp:harsh21.database.windows.net,1433;Initial Catalog=Trainer;User Id=harsh@harsh21;Password=21Sanitizer2000#");
             }
         }
 
